@@ -221,72 +221,61 @@
             <!-- Primer formulario -->
             <form id="form-1">
                 <h2>Registro de Datos Personales</h2>
-                <label><input type="text" name="first_name" placeholder="Nombre(s)"></label>
-                <label><input type="text" name="last_name" placeholder="Apellido(s)"></label>
-                <label><input type="text" name="dob" placeholder="Fecha de Nacimiento (DD/MM/AAAA)"></label>
-                <label><input type="checkbox" name="doc" value="birth_certificate"> Acta de nacimiento</label>
-                <label><input type="checkbox" name="doc" value="curp"> CURP</label>
+                <label><input type="text" name="nombre" placeholder="Nombre"></label>
+                <label><input type="text" name="apellido" placeholder="Apellidos"></label>
+                <label><input type="date" name="fecha" placeholder="Fecha de Nacimiento"></label>
+                <label><input type="checkbox" name="Acta de nacimiento" value="birth_certificate"> Acta de nacimiento</label>
+                <label><input type="checkbox" name="Curp" value="curp"> CURP</label>
+                <button type="button" id="button-1" >Continuar</button>
             </form>
         
             <!-- Segundo formulario -->
             <form id="form-2">
                 <h2>Información de Contacto</h2>
-                <label><input type="text" name="address" placeholder="Dirección"></label>
-                <label><input type="text" name="city" placeholder="Ciudad"></label>
-                <label><input type="text" name="state" placeholder="Estado"></label>
-                <label><input type="text" name="postal_code" placeholder="Código Postal"></label>
-                <label><input type="text" name="phone" placeholder="Teléfono"></label>
+                <label><input type="text" name="direccion" placeholder="Dirección"></label>
+                <label><input type="text" name="ciudad" placeholder="Ciudad"></label>
+                <label><input type="text" name="estado" placeholder="Estado"></label>
+                <label><input type="text" name="codigoPostal" placeholder="Código Postal"></label>
+                <label><input type="text" name="telefono" placeholder="Teléfono"></label>
+                <button type="button" id="button-2">Continuar</button>
             </form>
         
             <!-- Tercer formulario -->
             <form id="form-3">
                 <h2>Información Académica</h2>
-                <label><input type="text" name="previous_school" placeholder="Escuela de procedencia"></label>
-                <label><input type="text" name="career_interest" placeholder="Carrera de interés"></label>
+                <label><input type="text" name="escuelaProcedencia" placeholder="Escuela de procedencia"></label>
+                <label><input type="text" name="carrera" placeholder="Carrera de interés"></label>
                 <label>Seleccione modalidad de estudio:
                     <select name="study_mode">
                         <option value="presencial">Presencial</option>
                         <option value="distancia">A Distancia</option>
                     </select>
                 </label>
-                <label><input type="checkbox" name="doc" value="id"> Identificación oficial</label>
-                <label><input type="checkbox" name="doc" value="address_proof"> Comprobante de domicilio</label>
+                <label><input type="checkbox" name="identificacion" value="id"> Identificación oficial</label>
+                <label><input type="checkbox" name="domicilio" value="address_proof"> Comprobante de domicilio</label>
+                <button type="button" id="button-3">Continuar</button>
             </form>
         
             <!-- Cuarto formulario -->
             <form id="form-4">
-                <h2>Información Adicional</h2>
-                <label><input type="text" name="guardian_name" placeholder="Nombre del tutor"></label>
-                <label><input type="text" name="guardian_phone" placeholder="Teléfono del tutor"></label>
-                <label><input type="text" name="guardian_email" placeholder="Correo del tutor"></label>
+                <h2>Información de tutor</h2>
+                <label><input type="text" name="nombre del tutor" placeholder="Nombre del tutor"></label>
+                <label><input type="text" name="telefono" placeholder="Teléfono del tutor"></label>
+                <label><input type="text" name="email" placeholder="Correo del tutor"></label>
                 <label>Seleccione un turno:
                     <select name="shift">
                         <option value="morning">Matutino</option>
                         <option value="evening">Vespertino</option>
                     </select>
                 </label>
-                <label><input type="text" name="observations" placeholder="Observaciones"></label>
-                <button type="button" onclick="finishRegistration()">Finalizar Registro</button>
+                <label><input type="text" name="observaciones" placeholder="Observaciones"></label>
+                <button type="button" id="button-4">Finalizar Registro</button>
             </form>
         </section>
     </main>
     <footer>
 
     </footer>
-    <script>
-        function showNextForm(currentFormIndex) {
-            // Oculta el formulario actual
-            document.getElementById(`form-${currentFormIndex}`).style.display = 'none';
-            // Muestra el siguiente formulario
-            document.getElementById(`form-${currentFormIndex + 1}`).style.display = 'flex';
-        }
-    
-        function finishRegistration() {
-            // Oculta el último formulario y muestra un mensaje de éxito
-            document.getElementById('form-4').style.display = 'none';
-            document.getElementById("form-1").style.display = 'flex';
-            alert('Registro exitoso');
-        }
-    </script>
+    <script src="script/validacion.js"></script>
 </body>
 </html>
