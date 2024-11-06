@@ -9,6 +9,13 @@ function finalizarRegistro() {
     alert('Registro exitoso');
 }
 
+const phoneRegex = /^\d{7,10}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/;
+const cityRegex = /^[a-zA-Z\s]+$/;
+const stateRegex = /^[a-zA-Z\s]+$/;
+const postalCodeRegex = /^\d{5}$/;
+
 document.addEventListener("DOMContentLoaded", () => {
     // Se crea un array de forms para cada posteriormente iterarlos
     const forms = [
@@ -24,14 +31,55 @@ document.addEventListener("DOMContentLoaded", () => {
         let next = true;
 
         for (const element of formElements) {
+                        
             if ((element.type === 'text' || element.tagName.toLowerCase() === 'textarea') && element.value === "") {
-                alert(`El campo "${element.name}" está vacío.`);
+                alert(`El campo "${element.placeholder}" está vacío.`);
                 element.focus();
                 next = false;
                 break;
             }
+            
+            if ((element.type === 'text' || element.tagName.toLowerCase() === 'textarea')) {
+                if (element.name === "telefono" && !phoneRegex.test(element.value)) {
+                    alert("Por favor ingrese un número de teléfono válido (7-10 dígitos).");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+                if (element.name === "email" && !emailRegex.test(element.value)) {
+                    alert("Por favor ingrese un correo electrónico válido.");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+                if (element.name === "direccion" && !addressRegex.test(element.value)) {
+                    alert("Por favor ingrese una dirección válida.");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+                if (element.name === "ciudad" && !cityRegex.test(element.value)) {
+                    alert("Por favor ingrese una ciudad válida.");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+                if (element.name === "estado" && !stateRegex.test(element.value)) {
+                    alert("Por favor ingrese un estado válido.");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+                if (element.name === "codigoPostal" && !postalCodeRegex.test(element.value)) {
+                    alert("Por favor ingrese un código postal válido de 5 dígitos.");
+                    element.focus();
+                    next = false;
+                    break;
+                }
+            }
+
             if (element.type === 'date' && element.value === "") {
-                alert(`El campo "${element.name}" está vacío.`);
+                alert(`El campo "${element.placeholder}" está vacío.`);
                 element.focus();
                 next = false;
                 break;
@@ -43,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             }
             if (element.tagName.toLowerCase() === 'select' && element.value === "") {
-                alert(`Por favor selecciona una opción para "${element.name}".`);
+                alert(`Por favor selecciona una opción para "${element.placeholder}".`);
                 element.focus();
                 next = false;
                 break;
