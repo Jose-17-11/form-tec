@@ -30,15 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const formElements = Array.from(form.elements);
         let next = true;
 
-        for (const element of formElements) {
-                        
+        for (const element of formElements) {     
             if ((element.type === 'text' || element.tagName.toLowerCase() === 'textarea') && element.value === "") {
                 alert(`El campo "${element.placeholder}" está vacío.`);
                 element.focus();
                 next = false;
                 break;
             }
-
             if ((element.type === 'text' || element.tagName.toLowerCase() === 'textarea')) {
                 if (element.name === "telefono" && !phoneRegex.test(element.value)) {
                     alert("Por favor ingrese un número de teléfono válido (7-10 dígitos).");
@@ -97,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             }
         }
-
         // Si todo está correcto, muestra el siguiente formulario y en el caso de que se complete el cuarto vuelva a mostrar el primero
         if (next) {
             if (indiceFormulario === 4) {
@@ -107,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
-
     // Asignamos el evento de clic a cada botón, llamando a la función de validación
     forms.forEach((item, index) => {
         item.button.addEventListener("click", (e) => {
