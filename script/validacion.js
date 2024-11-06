@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 next = false;
                 break;
             }
-            
+
             if ((element.type === 'text' || element.tagName.toLowerCase() === 'textarea')) {
                 if (element.name === "telefono" && !phoneRegex.test(element.value)) {
                     alert("Por favor ingrese un número de teléfono válido (7-10 dígitos).");
