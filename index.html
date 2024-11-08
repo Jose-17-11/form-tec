@@ -125,8 +125,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
-            padding: 0 2rem;
         }
 
         form {
@@ -141,10 +139,11 @@
             border-radius: 15px;
             padding: 2rem;
         }
+
+        #form-2, #form-3, #form-4 {
+            display: none;
+        }
         /* Se comienza con los estilos iniciales de cada formulario */
-
-
-
         .contact-form {
             background-color: #fff;
             width: 100%;
@@ -224,7 +223,7 @@
                 </article>
             </div>
         </section>
-        <form id="formulario" onsubmit="return validarFormulario(event)">
+        <section id="formulario">
             <!-- Primer formulario -->
             <form id="form-1" onsubmit="siguienteFormulario(event, 1)">
                 <h2>Registro de Datos Personales</h2>
@@ -291,7 +290,7 @@
                     <input type="text" name="observaciones" placeholder="Observaciones">
                 </label>
                 <button type="button" id="button-4">Finalizar Registro</button>
-            </form>
+            </section>
         </section>
             <section id="contacto">
                 <textarea id="x">Hello, World!</textarea>
