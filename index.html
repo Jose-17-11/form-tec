@@ -226,17 +226,18 @@
         </section>
         <form id="formulario" onsubmit="return validarFormulario(event)">
             <!-- Primer formulario -->
-            <fieldset id="form-1">
+            <form id="form-1" onsubmit="siguienteFormulario(event, 1)">
                 <h2>Registro de Datos Personales</h2>
                 <label><input type="text" name="nombre" placeholder="Nombre" required pattern="[A-Za-z\s]+" title="Solo letras y espacios"></label>
                 <label><input type="text" name="apellido" placeholder="Apellidos" required pattern="[A-Za-z\s]+" title="Solo letras y espacios"></label>
                 <label><input type="date" name="fecha" placeholder="Fecha de Nacimiento" required></label>
                 <label><input type="checkbox" name="Acta de nacimiento" value="birth_certificate" required> Acta de nacimiento</label>
                 <label><input type="checkbox" name="Curp" value="curp" required> CURP</label>
-            </fieldset>
+                <button type="submit" id="button-1" >Continuar</button>
+            </form>
         
             <!-- Segundo formulario -->
-            <fieldset id="form-2">
+            <form id="form-2" onsubmit="siguienteFormulario(event, 2)">
                 <h2>Información de Contacto</h2>
                 <label><input type="text" name="direccion" placeholder="Dirección" required pattern="[a-zA-Z0-9\s,.'-]{3,}" title="Ingrese una direccion correcta"></label>
                 <label><input type="text" name="ciudad" placeholder="Ciudad" required pattern="[a-zA-Z\s]+" title="Ingrese una ciudad correcta"></label>
@@ -244,10 +245,11 @@
                 <label><input type="text" name="codigoPostal" placeholder="Código Postal" required pattern="\d{5,}" title="Debe tener 5 digitos"></label>
                 <label><input type="tel" name="telefono" placeholder="Teléfono" required 
                     pattern="\d{7,10}" title="Debe tener entre 7 y 10 dígitos numéricos"></label>
-            </fieldset>
+                <button type="submit" id="button-2">Continuar</button>
+            </form>
         
             <!-- Tercer formulario -->
-            <fieldset id="form-3">
+            <form id="form-3" onsubmit="siguienteFormulario(event, 3)">
                 <h2>Información Académica</h2>
                 <label><input type="text" name="escuelaProcedencia" placeholder="Escuela de procedencia" required></label>
                 <label><input type="text" name="carrera" placeholder="Carrera de interés" required></label>
@@ -260,10 +262,11 @@
                 </label>
                 <label><input type="checkbox" name="identificacion" value="id" required> Identificación oficial</label>
                 <label><input type="checkbox" name="domicilio" value="address_proof" required> Comprobante de domicilio</label>
-            </fieldset>
+                <button type="button" id="button-3">Continuar</button>
+            </form>
         
             <!-- Cuarto formulario -->
-            <fieldset id="form-4">
+            <form id="form-4" onsubmit="finalizarRegistro()">
                 <h2>Información de tutor</h2>
                 <label>
                     <input type="text" name="nombre_tutor" placeholder="Nombre del tutor" required 
@@ -287,24 +290,30 @@
                 <label>
                     <input type="text" name="observaciones" placeholder="Observaciones">
                 </label>
-                <button type="submit" id="button-4">Finalizar Registro</button>
-            </fieldset>
-        </form>
-        
-        <section id="contacto">
-            <textarea id="x">Hello, World!</textarea>
+                <button type="button" id="button-4">Finalizar Registro</button>
+            </form>
+        </section>
+            <section id="contacto">
+                <textarea id="x">Hello, World!</textarea>
+            </section>
         </section>
     </main>
+    
     <footer>
 
     </footer>
     <script>
-        function validarFormulario(event) {
-            // Este código se ejecuta solo si la validación HTML5 es exitosa
-            event.preventDefault(); // Detiene el envío real para mostrar la alerta
-            alert("¡Registro exitoso!");
-            return true; // Permite que el formulario continúe si hay que hacer algo más
-        }
+        function siguienteFormulario(event, currentFormIndex) {
+        event.preventDefault(); 
+        document.getElementById(`form-${currentFormIndex}`).style.display = 'none';
+        document.getElementById(`form-${currentFormIndex + 1}`).style.display = 'flex';
+    }
+
+    function finalizarRegistro() {
+        document.getElementById('form-4').style.display = 'none';
+        document.getElementById("form-1").style.display = 'flex';
+        alert('Registro exitoso');
+    }
     </script>
     <!-- <script src="script/validacion.js"></script> -->
 </body>
